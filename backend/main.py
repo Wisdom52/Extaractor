@@ -54,7 +54,8 @@ def ingest_text_batch(batch: schemas.BatchIngestRequest, db: Session = Depends(g
     results = []
     for item in batch.items:
         # 1. Extract data using Ollama
-        extracted_json = ollama_service.extract_data(item.text, item.source_type)
+        instruction = item.custom_instruction or batch.global_instruction
+        extracted_json = extract_data(item.text, item.source_type, instruction)
         
         # 2. Save to DB
         db_item = models.ExtractedData(
