@@ -1,20 +1,25 @@
 import Constants from 'expo-constants';
 import { ExtractedData, TriggerWord, TextIngestRequest, TriggerWordCreate } from '../types';
 
+// const getBaseUrl = () => {
+//     // If running in Expo Go on physical device, we need the LAN IP.
+//     // Constants.expoConfig.hostUri contains the IP:PORT of the packager.
+//     const debuggerHost = Constants.expoConfig?.hostUri;
+//     const localhost = debuggerHost?.split(':')[0];
+
+//     if (!localhost) {
+//         // Fallback for simulator or if hostUri is missing
+//         return 'http://10.0.2.2:8000'; // Android Emulator localhost
+//         // return 'http://localhost:8000'; // iOS Simulator
+//     }
+
+//     return `http://${localhost}:8000`;
+// };
+
 const getBaseUrl = () => {
-    // If running in Expo Go on physical device, we need the LAN IP.
-    // Constants.expoConfig.hostUri contains the IP:PORT of the packager.
-    const debuggerHost = Constants.expoConfig?.hostUri;
-    const localhost = debuggerHost?.split(':')[0];
-
-    if (!localhost) {
-        // Fallback for simulator or if hostUri is missing
-        return 'http://10.0.2.2:8000'; // Android Emulator localhost
-        // return 'http://localhost:8000'; // iOS Simulator
-    }
-
-    return `http://${localhost}:8000`;
+    return process.env.EXPO_PUBLIC_API_URL;
 };
+
 
 const API_BASE_URL = getBaseUrl();
 

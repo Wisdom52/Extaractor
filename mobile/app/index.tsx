@@ -49,6 +49,7 @@ export default function Dashboard() {
     }
 
     return (
+        // <SafeAreaView style={styles.safeContainer}>
         <ScrollView
             style={styles.container}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
@@ -93,13 +94,14 @@ export default function Dashboard() {
                 )}
             </View>
         </ScrollView>
+        // </SafeAreaView> 
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#f0f4f8',
         padding: 16,
     },
     center: {
@@ -222,3 +224,4 @@ const styles = StyleSheet.create({
         color: '#666',
     },
 });
+
